@@ -1,5 +1,5 @@
 {
-  "name": "ts-parcel-electron",
+  "name": "ts-parcel-electron-react",
   "version": "1.0.0",
   "main": "dist/main/main.js",
   "author": "Caleb Frieze <calebfrieze@gmail.com>",
