@@ -1,8 +1,12 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { ExampleComponent } from "./components/ExampleComponent.tsx/ExampleComponent";
 
 const App: React.FC = () => (
-  <div>This application demo was built with TS + Parcel + Electron + React</div>
+  <>
+    <p>This app was built with Electron + TypeScript + React and bundled by Parcel</p>
+    <ExampleComponent />
+  </>
 );
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));

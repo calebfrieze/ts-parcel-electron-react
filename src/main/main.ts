@@ -16,11 +16,9 @@ function createWindow() {
     }
   });
 
+  mainWindow.loadFile(path.join(__dirname, "../renderer/index.html"));
   if (!PRODUCTION) {
-    mainWindow.loadURL("http://localhost:6060");
     mainWindow.webContents.openDevTools();
-  } else {
-    mainWindow.loadFile(path.join(__dirname, "../renderer/production/index.html"));
   }
 
   mainWindow.on('closed', () => {

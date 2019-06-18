@@ -5,14 +5,15 @@
   "author": "Caleb Frieze <calebfrieze@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "watch": "npm-run-all -p parcel:watch electron:watch",
-    "build": "rimraf dist && npm-run-all -s renderer:build main:build",
-    "parcel:watch": "npm-run-all -p main:watch renderer:watch",
+    "watch": "rimraf dist && yarn parcel:watch && yarn electron:watch",
+    "build": "rimraf dist && yarn renderer:build && yarn main:build",
+    "parcel:watch": "yarn renderer:watch & yarn main:watch &",
+    "electron:start": "NODE_ENV=production electron .",
     "electron:watch": "nodemon --watch dist/main/main.js --exec \"NODE_ENV=development electron .\"",
     "main:watch": "parcel watch src/main/main.ts --out-dir dist/main --out-file main --target electron",
     "main:build": "parcel build src/main/main.ts --out-dir dist/main --out-file main --target electron",
-    "renderer:watch": "parcel src/renderer/index.html --port 6060 --out-dir dist/renderer/development",
-    "renderer:build": "parcel build src/renderer/index.html --public-url ./ --out-dir dist/renderer/production"
+    "renderer:watch": "NODE_ENV=development parcel watch src/renderer/index.html --public-url ./ --out-dir dist/renderer --target electron",
+    "renderer:build": "parcel build src/renderer/index.html --public-url ./ --out-dir dist/renderer --target electron"
   },
   "devDependencies": {
     "@types/electron": "^1.6.10",
@@ -20,7 +21,6 @@
     "@types/react-dom": "^16.8.4",
     "electron": "^5.0.4",
     "nodemon": "^1.19.1",
-    "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.3",
     "rimraf": "^2.6.3",
     "sass": "^1.21.0",
